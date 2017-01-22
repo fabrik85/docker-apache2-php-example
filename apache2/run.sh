@@ -2,4 +2,4 @@
 set -xe
 
 # Start Apache with the right permissions
-apache2/safe-start -DFOREGROUND
+/apache2/safe-start -DFOREGROUND
