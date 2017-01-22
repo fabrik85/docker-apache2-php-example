@@ -1,0 +1,8 @@
+FROM fabrik85/php-example
+MAINTAINER Attila Fabrik <fabrik85@gmail.com>
+
+# Install mysql-client & PHP extension
+RUN requirements="mysql-client" \
+    && apt-get update && apt-get install -y $requirements && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-install pdo_mysql \
+    && apt-get purge --auto-remove -y

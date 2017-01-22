@@ -1,0 +1,21 @@
+# This file extending the entire docker-compose.yml (multiple compose files)
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    # Links allow you to define extra aliases by which a service is reachable from another service
+    # In this case it's optional as the service name i already "mysql"
+    links:
+      - mysql
+    volumes:
+      - "./web-mysql:/web"
+
+  mysql:
+    image: mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+    expose:
+        - 3306

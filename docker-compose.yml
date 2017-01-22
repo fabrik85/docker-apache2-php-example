@@ -1,0 +1,14 @@
+version: '2'
+
+# When you run docker-compose up, the following happens:
+
+# 1. A network called "dockerapache2phpexample_default" is created.
+# 2. A container is created using web’s configuration. It joins the network "dockerapache2phpexample_default" under the name web.
+
+services:
+  # Any service can reach any other service at that service’s name. 
+  # Example: Other container could connect on: http://web:80
+  web:
+    build: .
+    ports:
+      - "80:80"
